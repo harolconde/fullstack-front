@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>tips</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button full (click)="getTips()" round color="secondary">Sugerencias</button>
+	<ion-card *ngFor ="let tip of listTips" >
+		<ion-card-header>
+			{{tip.id}}
+			{{tip.name}}
+		</ion-card-header>
+		<ion-card-content>
+			{{tip.description}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postTips(name, description)">
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Descripcion</ion-label> -->
+        <ion-input type="text" [(ngModel)]="description" name="description" placeholder="Descripcion"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Añadir Sugerencia</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deleteTips(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Sugerencia</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putTips(id, name, description)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Descripcion</ion-label> -->
+        <ion-input type="text" [(ngModel)]="description" name="description" placeholder="Descripcion"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Sugerencia</button>
+    </form>
+</ion-content>

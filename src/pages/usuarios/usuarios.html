@@ -1,0 +1,93 @@
+<ion-header bg-green>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Usuarios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding color="light">
+	<button ion-button full (click)="getUsuarios()" round color="secondary">Usuarios</button>
+	<ion-card *ngFor ="let usuario of listUsuarios" >
+		<ion-card-header>
+			{{usuario.id}}
+			{{usuario.name}}
+			{{usuario.password}}
+			{{usuario.email}}
+			{{usuario.phone}}
+			{{usuario.datebirth}}
+		</ion-card-header>
+		<ion-card-content>
+			{{usuario.img}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postUsuarios(name, password, email, phone, datebirth, img)">
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Contraseña</ion-label> -->
+        <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Correo</ion-label> -->
+        <ion-input type="text" [(ngModel)]="email" name="email" placeholder="Correo Electronico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Telefono</ion-label> -->
+        <ion-input type="text" [(ngModel)]="phone" name="phone" placeholder="Telefono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Fecha de nacimiento(AAAA/MM/DD)</ion-label> -->
+        <ion-input type="text" [(ngModel)]="datebirth" name="datebirth" placeholder="Fecha de nacimiento(AAAA/MM/DD)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Foto</ion-label> -->
+        <ion-input type="text" [(ngModel)]="img" name="img" placeholder="Foto"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Añadir Usuario</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deleteUsuarios(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Usuario</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putUsuarios(id, name, password, email, phone, datebirth, img)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Contraseña</ion-label> -->
+        <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Correo</ion-label> -->
+        <ion-input type="text" [(ngModel)]="email" name="email" placeholder="Correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Telefono</ion-label> -->
+        <ion-input type="text" [(ngModel)]="phone" name="phone" placeholder="Telefono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Fecha de nacimiento(AAAA/MM/DD)</ion-label> -->
+        <ion-input type="text" [(ngModel)]="datebirth" name="datebirth" placeholder="Fecha de nacimiento(AAAA/MM/DD)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Foto</ion-label> -->
+        <ion-input type="text" [(ngModel)]="img" name="img" placeholder="Foto"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Usuario</button>
+    </form>
+</ion-content>

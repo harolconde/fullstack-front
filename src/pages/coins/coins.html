@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>coins</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button full (click)="getCoins()" round color="secondary">Traer Puntos</button>
+	<ion-card *ngFor ="let coin of listCoins" >
+		<ion-card-header>
+			{{coin.id}}
+		</ion-card-header>
+		<ion-card-content>
+			{{coin.number}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postCoins(number)">
+      <ion-item>
+        <!-- <ion-label>Cantidad</ion-label> -->
+        <ion-input type="number" [(ngModel)]="number" name="number" placeholder="Cantidad"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Añadir Puntos</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deleteCoins(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Puntos</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putCoins(id, number)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Cantidad</ion-label> -->
+        <ion-input type="number" [(ngModel)]="number" name="number" placeholder="Puntos"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Puntos</button>
+    </form>
+</ion-content>

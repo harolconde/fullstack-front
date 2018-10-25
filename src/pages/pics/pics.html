@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>pics</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button full (click)="getPics()" round color="secondary">Traer Fotos</button>
+	<ion-card *ngFor ="let pic of listPics" >
+		<ion-card-header>
+			{{pic.id}}
+		</ion-card-header>
+		<ion-card-content>
+			{{pic.name}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postPics(name)">
+      <ion-item>
+        <!-- <ion-label>Foto</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Foto"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Añadir Foto</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deletePics(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Foto</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putPics(id, name)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Foto</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Foto"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Foto</button>
+    </form>
+</ion-content>

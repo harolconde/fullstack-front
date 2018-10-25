@@ -1,0 +1,57 @@
+<ion-header color="secondary">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>admins</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button full (click)="getAdmins()" round color="secondary">Traer Admins</button>
+	<ion-card *ngFor ="let admin of listAdmins" >
+		<ion-card-header>
+			{{admin.id}}
+			{{admin.user}}<br>
+		</ion-card-header>
+		<ion-card-content>
+			{{admin.password}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postAdmins(user, password)">
+      <ion-item>
+        <!-- <ion-label>Usuario</ion-label> -->
+        <ion-input type="text" [(ngModel)]="user" name="user" placeholder="Usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Contraseña</ion-label> -->
+        <ion-input type="text" [(ngModel)]="password" name="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Crear Admin</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deleteAdmins(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Admin</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putAdmins(id, user, password)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Usuario</ion-label> -->
+        <ion-input type="text" [(ngModel)]="user" name="user" placeholder="Usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Contraseña</ion-label> -->
+        <ion-input type="text" [(ngModel)]="password" name="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Admin</button>
+    </form>
+</ion-content>

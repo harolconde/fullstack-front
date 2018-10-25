@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>socialnets</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button full (click)="getSocialnets()" round color="secondary">Redes Sociales</button>
+	<ion-card *ngFor ="let socialnet of listSocialnets" >
+		<ion-card-header>
+			{{socialnet.id}}
+		</ion-card-header>
+		<ion-card-content>
+			{{socialnet.name}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postSocialnets(name)">
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Añadir Red</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deleteSocialnets(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Red</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putSocialnets(id, name)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Red</button>
+    </form>
+</ion-content>

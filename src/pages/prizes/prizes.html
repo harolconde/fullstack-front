@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>prizes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button full (click)="getPrizes()" round color="secondary">Traer Premios</button>
+	<ion-card *ngFor ="let prize of listPrizes" >
+		<ion-card-header>
+			{{prize.id}}
+			{{prize.name}}
+			{{prize.ncoin}}
+		</ion-card-header>
+		<ion-card-content>
+			{{prize.img}}
+		</ion-card-content>
+	</ion-card>
+	<hr>
+	<form (ngSubmit)="postPrizes(name, ncoin, img)">
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Puntos</ion-label> -->
+        <ion-input type="number" [(ngModel)]="ncoin" name="ncoin" placeholder="Puntos"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Foto</ion-label> -->
+        <ion-input type="text" [(ngModel)]="img" name="img" placeholder="Foto"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Añadir Premio</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="deletePrizes(id)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Borrar Premio</button>
+    </form>
+    <hr>
+    <form (ngSubmit)="putPrizes(id, name, ncoin, img)">
+      <ion-item>
+        <!-- <ion-label>id</ion-label> -->
+        <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Nombre</ion-label> -->
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Puntos</ion-label> -->
+        <ion-input type="number" [(ngModel)]="ncoin" name="ncoin" placeholder="Puntos"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Foto</ion-label> -->
+        <ion-input type="text" [(ngModel)]="img" name="img" placeholder="Foto"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block round color="secondary">Actualizar Premio</button>
+    </form>
+</ion-content>
